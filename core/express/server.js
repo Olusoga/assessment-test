@@ -302,14 +302,17 @@ function Server(serverConfig = {}) {
   }
 
   function startServer() {
-    app.use((_, res, __) => {
+    app.use((_, res) => {
       // Global 404 Catcher
       res.status(404).json({
         status: 'error',
         message: 'Resource not found.',
       });
     });
-    app.use((err, _, res, __) => {
+    app.use((err, _, res, next) => {
+      if (next) {
+        // Express requires the 4th argument for error middleware detection.
+      }
       appLogger.errorX(err, 'global-500-error');
       // Global 500 Catcher
       res.status(500).json({

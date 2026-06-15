@@ -77,7 +77,9 @@ if (canLogEndpointInformation) {
   logEndpointMetaData(ENDPOINT_CONFIGS);
 }
 
-async function startApp() {
+async function startApp(options = {}) {
+  const { shouldListen = true } = options;
+
   await createConnection({
     uri: process.env.MONGODB_URI,
   });
@@ -94,7 +96,9 @@ async function startApp() {
     setupEndpointHandlers.call({ server }, config.path, config.options);
   });
 
-  server.startServer();
+  if (shouldListen) {
+    server.startServer();
+  }
 
   return server;
 }
