@@ -6,6 +6,7 @@ const { createServer } = require('@app-core/server');
 const { createConnection } = require('@app-core/mongoose');
 const { createQueue } = require('@app-core/queue');
 
+const getRootEndpoint = require('./endpoints/swagger/get-root');
 const getOpenAPISpecEndpoint = require('./endpoints/swagger/get-openapi-spec');
 const getSwaggerUIEndpoint = require('./endpoints/swagger/get-swagger-ui');
 const createCreatorCardEndpoint = require('./endpoints/creator-cards/create-creator-card');
@@ -19,6 +20,10 @@ const ENDPOINT_CONFIGS = [
   {
     path: './endpoints/swagger/',
     handlers: [
+      {
+        fileName: 'get-root.js',
+        handler: getRootEndpoint,
+      },
       {
         fileName: 'get-openapi-spec.js',
         handler: getOpenAPISpecEndpoint,
