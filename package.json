@@ -1,7 +1,7 @@
 {
-  "name": "profold-be-api",
+  "name": "creator-card-api-assessment",
   "version": "1.0.0",
-  "description": "Project Scaffold for R17 Projects",
+  "description": "Creator Card microservice API assessment built with Node.js, Express, and MongoDB.",
   "main": "app.js",
   "type": "commonjs",
   "engines": {
@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "profold-be-api-1"
+    "url": "https://github.com/Olusoga/assessment-test.git"
   },
   "scripts": {
     "start": "node bootstrap.js",
-    "test": "set USE_MOCK_MODEL=1 && mocha --recursive --require dotenv/config",
+    "test": "USE_MOCK_MODEL=1 mocha --recursive --require dotenv/config",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
     "sync-envs": "node sync-env-files"
